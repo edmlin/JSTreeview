@@ -1,0 +1,57 @@
+.treeview-expander
+{
+	width:20px;
+	height:24px;
+	display:inline-block;
+	background-repeat: no-repeat;
+    background-position: center center;
+}
+.treeview-icon
+{
+	width:20px;
+	height:24px;
+	display:inline-block;
+	background-repeat: no-repeat;
+    background-position: center center;
+}
+.treeview-icon-opened
+{
+	background-image: url(icon-folder-opened.gif)
+}
+
+.treeview-icon-closed
+{
+	background-image: url(icon-folder-closed.gif)
+}
+
+.treeview-icon-file
+{
+	background-image: url(icon-file.gif)
+}
+
+.treeview-expander-minus
+{
+	background-image: url(icon-minus.gif)
+}
+.treeview-expander-plus
+{
+	background-image: url(icon-plus.gif)
+}
+.treeview-label
+{
+	line-height:23px;
+	height:24px;
+	display:inline-block;
+	vertical-align: top;
+	font-family:Tahoma, Helvetica;
+	font-size:11px;
+}
+.treeview-label:hover
+{
+	text-decoration:underline;
+	cursor:pointer;
+}
+.treeview-node-selected > .treeview-label
+{
+	color:red;
+}

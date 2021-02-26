@@ -1,0 +1,60 @@
+<!doctype html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type='text/javascript' src='treeview.js'></script>
+<link rel='stylesheet' href='treeview.css' type='text/css'/>
+<script>
+var tree;
+$(function(){
+tree=new TreeView({container:'#container'});
+tree.ParseJSON({roots:[
+{"id":1,"label":"111"},
+{"id":2,"label":"222","children":[
+	{"id":21,"label":"2221"},
+	{"id":22,"label":"2222","children":[
+		{"id":221,"label":"22221"},
+		{"id":222,"label":"22222"}
+	]}
+]},
+{"id":3,"label":"333","children":[
+	{"id":31,"label":"3331"},
+	{"id":32,"label":"3332"}
+]}
+]});
+tree.OnSelect(function(node){
+	$("#log").append(node.label+" was selected.<br/>");
+});
+tree.Show();
+
+$("#delete").click(function(){
+	if(tree.selectedNode)
+	{
+		tree.selectedNode.Remove();
+		tree.selectedNode.parent.Show();
+	}
+});
+$("#add").click(function(){
+	if(tree.selectedNode)
+	{
+		tree.selectedNode.AddChild(new TreeNode({id:$("#node-id").val(),label:$("#node-label").val()}));
+		tree.selectedNode.Show();
+	}
+});
+});
+</script>
+</head>
+<html>
+<body>
+<div id='container' style='float:left;border:0px solid silver;'>
+</div>
+<div style='float:right;'>
+<input type=button id='delete' value='Delete'>
+<br/>
+Id: <input id='node-id'>
+Label: <input id='node-label'>
+<input type=button id='add' value='Add'>
+<div id='log'>
+</div>
+</div>
+</body>
+</html>
